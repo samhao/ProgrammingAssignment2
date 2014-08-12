@@ -1,3 +1,15 @@
+---
+title: "Test Code for cachematrix.R"
+date: "Monday, August 11, 2014"
+output: html_document
+---
+
+part 1
+
+##  Two required functions for the project:
+
+
+```{r}
 ## the makeCacheMatrx function has an internal field called inverse,
 ## it is used to cache the result of computation of the inverse of an matrix.
 ## it does not compute the inverse itself, rather it let the caller sets it when 
@@ -46,4 +58,36 @@ cacheSolve <- function(x, ...) {
   x$setinverse(iv)
   iv  
 }
+
+```
+part 2
+
+## Test code and results of testing the above two functions
+
+```{r}
+
+a = makeCacheMatrix( x = matrix (c(2, 4, 3, 1, 5, 7, 7, 4, 2), ncol = 3))
+
+a$get()
+
+a$getinverse()
+
+cacheSolve(a)
+
+a$getinverse()
+
+cacheSolve(a)
+
+a$set( matrix(c(2, 4, 5, 1, 5, 7, 7, 4, 2), ncol = 3))
+
+a$getinverse()
+
+cacheSolve(a)
+
+a$getinverse()
+
+cacheSolve(a)
+
+
+```
 
